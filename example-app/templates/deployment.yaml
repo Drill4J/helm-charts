@@ -1,0 +1,96 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "example-app.fullname" . }}
+  labels:
+    {{- include "example-app.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "example-app.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "example-app.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "example-app.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - env:
+            - name: AGENT_VERSION
+              value: latest
+            - name: AUTOTEST_AGENT_VERSION
+              value: latest
+          name: drill-agent
+          image: drill4j/agent-download:1.9
+          # command: ["sh", "/agent-download.sh"]
+          volumeMounts:
+            - mountPath: /data
+              name: agent-files
+        # - name: java-agent
+        #   image: drill4j/java-agent:0.7.0-28
+        #   volumeMounts:
+        #     - name: agent-files
+        #       mountPath: /java-agent
+        - name: {{ .Chart.Name }}
+          env:
+          - name: JAVA_TOOL_OPTIONS
+            value: '"-agentpath:/data/agent/libdrill_agent.so=drillInstallationDir=/data/agent,adminAddress=drill-admin:8090,agentId=pet,buildVersion=0.1.0,logLevel=DEBUG"'
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 8080
+              # protocol: TCP
+          # livenessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: 8080
+          livenessProbe:
+            exec:
+              command:
+              - ls
+              - /app/spring-petclinic.jar
+          # readinessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: 8080
+          readinessProbe:
+            exec:
+              command:
+              - ls
+              - /app/spring-petclinic.jar
+          volumeMounts:
+          - name: agent-files
+            mountPath: /data
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumes:
+      - name: agent-files
+        emptyDir: {}

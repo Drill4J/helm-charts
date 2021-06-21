@@ -1,0 +1,95 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "admin.fullname" . }}
+  labels:
+    {{- include "admin.labels" . | nindent 4 }}
+spec:
+  serviceName: {{ include "admin.fullname" . }}
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "admin.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "admin.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "admin.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          env:
+            - name: DRILL_AGENTS_SOCKET_TIMEOUT
+              value: "120"
+            - name: DRILL_DEFAULT_PACKAGES
+              value: "org/springframework/samples/petclinic"
+            - name: JAVA_TOOL_OPTIONS
+              value: "-Xmx2g"
+            - name: LOG_LEVEL
+              value: "DEBUG"
+            - name: TEST2CODE_PLUGIN_VERSION
+              value: "latest"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: port8090
+              containerPort: 8090
+          livenessProbe:
+            httpGet:
+              path: /apidocs/index.html?url=./openapi.json
+              port: 8090
+          readinessProbe:
+            httpGet:
+              path: /apidocs/index.html?url=./openapi.json
+              port: 8090
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+          volumeMounts:
+            - name: drill-storage
+              mountPath: /work
+  {{- if .Values.persistence.enabled }}
+  volumeClaimTemplates:
+  - metadata:
+      name: drill-storage
+    {{- if .Values.persistence.labels.enabled }}
+      labels:
+        release: {{ .Release.Name | quote }}
+        chart: "{{ .Chart.Name }}"
+        app: "{{ template "admin.fullname" . }}"
+        {{- range $key, $value := .Values.labels }}
+        {{ $key }}: {{ $value | quote }}
+        {{- end }}
+    {{- end }}
+    {{- with .Values.persistence.annotations  }}
+      annotations:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    spec:
+{{ toYaml .Values.volumeClaimTemplate | indent 6 }}
+  {{- end }}
