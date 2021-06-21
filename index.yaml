@@ -9,7 +9,7 @@ entries:
     name: admin
     type: application
     urls:
-    - https://drill4j.github.io/helm-chart/admin-0.1.0.tgz
+    - https://drill4j.github.io/helm-charts/admin-0.1.0.tgz
     version: 0.1.0
   admin-ui:
   - apiVersion: v2
@@ -20,7 +20,7 @@ entries:
     name: admin-ui
     type: application
     urls:
-    - https://drill4j.github.io/helm-chart/admin-ui-0.1.0.tgz
+    - https://drill4j.github.io/helm-charts/admin-ui-0.1.0.tgz
     version: 0.1.0
   example-app:
   - apiVersion: v2
@@ -31,6 +31,6 @@ entries:
     name: example-app
     type: application
     urls:
-    - https://drill4j.github.io/helm-chart/example-app-0.1.0.tgz
+    - https://drill4j.github.io/helm-charts/example-app-0.1.0.tgz
     version: 0.1.0
 generated: "2021-06-21T19:20:12.9546582+06:00"
