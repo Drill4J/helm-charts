@@ -52,10 +52,12 @@ spec:
             httpGet:
               path: /apidocs/index.html?url=./openapi.json
               port: 8090
+            initialDelaySeconds: 5
           readinessProbe:
             httpGet:
               path: /apidocs/index.html?url=./openapi.json
               port: 8090
+            initialDelaySeconds: 5
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
