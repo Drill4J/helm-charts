@@ -30,9 +30,9 @@ spec:
       containers:
         - env:
             - name: AGENT_VERSION
-              value: latest
+              value: 0.7.0-30
             - name: AUTOTEST_AGENT_VERSION
-              value: latest
+              value: 0.16.2
           name: drill-agent
           image: drill4j/agent-download:1.9
           # command: ["sh", "/agent-download.sh"]

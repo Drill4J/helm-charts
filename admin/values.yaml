@@ -84,9 +84,9 @@ affinity: {}
 env:          
  DRILL_AGENTS_SOCKET_TIMEOUT: "120"
  DRILL_DEFAULT_PACKAGES: "com/epam/ta/reportportal"
- JAVA_TOOL_OPTIONS: "-Xmx6g"
+ JAVA_TOOL_OPTIONS: "-Xmx2g"
  LOG_LEVEL: "DEBUG"
- TEST2CODE_PLUGIN_VERSION: "latest"
+ TEST2CODE_PLUGIN_VERSION: "0.7.0-140"
 
 persistence:
   enabled: true
