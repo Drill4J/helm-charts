@@ -2,35 +2,35 @@ apiVersion: v1
 entries:
   admin:
   - apiVersion: v2
-    appVersion: 0.7.0-95
-    created: "2021-06-21T19:20:12.9558421+06:00"
+    appVersion: 0.7.0-111
+    created: "2021-06-22T14:28:37.7691515+06:00"
     description: A Helm chart for Kubernetes
-    digest: 138fc62e28723d0a626e6c21e7f611469b92fda084fe4bd117467c3e96904270
+    digest: dcb21867259d22a6b978edffa5b698d752cc7159f208812cf1c86b9f8d6fcb77
     name: admin
     type: application
     urls:
-    - https://raw.githubusercontent.com/drill4j/helm-charts/main/admin-0.1.0.tgz
-    version: 0.1.0
+    - https://raw.githubusercontent.com/drill4j/helm-charts/main/admin-0.1.1.tgz
+    version: 0.1.1
   admin-ui:
   - apiVersion: v2
-    appVersion: 0.7.0-267
-    created: "2021-06-21T19:20:12.9561502+06:00"
+    appVersion: 0.7.1
+    created: "2021-06-22T14:28:37.7695977+06:00"
     description: A Helm chart for Kubernetes
-    digest: 49d5ac4e14e244b9879b71475c778b28df1a299f43d52dda7d119b821c73293c
+    digest: d6bbb8a69ad7904ca1d060c2e1a70d7977b075d9161669fcc7a6f9de075e5993
     name: admin-ui
     type: application
     urls:
-    - https://raw.githubusercontent.com/drill4j/helm-charts/main/admin-ui-0.1.0.tgz
-    version: 0.1.0
+    - https://raw.githubusercontent.com/drill4j/helm-charts/main/admin-ui-0.1.1.tgz
+    version: 0.1.1
   example-app:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2021-06-21T19:20:12.9564546+06:00"
+    created: "2021-06-22T14:28:37.7698544+06:00"
     description: A Helm chart for Kubernetes
-    digest: f0e1cbfe538303efd51c5350d3d167627685577bb629a44ac4ff35af8bfb69a6
+    digest: de2011774c410bcd6bad26b8cc3ccd81c5c5bb2752c9a1fb896e4c627e419938
     name: example-app
     type: application
     urls:
-    - https://raw.githubusercontent.com/drill4j/helm-charts/main/example-app-0.1.0.tgz
-    version: 0.1.0
-generated: "2021-06-21T19:20:12.9546582+06:00"
+    - https://raw.githubusercontent.com/drill4j/helm-charts/main/example-app-0.1.1.tgz
+    version: 0.1.1
+generated: "2021-06-22T14:28:37.7490382+06:00"
