@@ -35,15 +35,9 @@ spec:
               value: 0.16.2
           name: drill-agent
           image: drill4j/agent-download:1.9
-          # command: ["sh", "/agent-download.sh"]
           volumeMounts:
             - mountPath: /data
               name: agent-files
-        # - name: java-agent
-        #   image: drill4j/java-agent:0.7.0-28
-        #   volumeMounts:
-        #     - name: agent-files
-        #       mountPath: /java-agent
         - name: {{ .Chart.Name }}
           env:
           - name: JAVA_TOOL_OPTIONS
