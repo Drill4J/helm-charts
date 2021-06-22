@@ -16,6 +16,8 @@ helm repo add drill4j https://raw.githubusercontent.com/drill4j/helm-charts/main
 helm repo update
 ```
 
+Install in MicroK8S
+
 ## Install drill admin by helm. You need set your URL (admin is web for swagger)
 ```
 URL=drill-admin.10.66.218.100.sslip.io
@@ -34,6 +36,7 @@ URL=example-app.10.66.218.100.sslip.io
 helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ example-app drill4j/example-app
 ```
 
+Install in Kubernetes on Cloud
 
 # Installation NGINX Ingress Controller
 ```
