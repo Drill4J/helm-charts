@@ -10,7 +10,7 @@
 kubectl create namespace drill
 ```
 
-## Add helm pepo drill4j
+## Add helm repo drill4j
 ```
 helm repo add drill4j https://raw.githubusercontent.com/drill4j/helm-charts/main
 helm repo update
