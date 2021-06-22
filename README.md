@@ -16,26 +16,6 @@ helm repo add drill4j https://raw.githubusercontent.com/drill4j/helm-charts/main
 helm repo update
 ```
 
-Install in MicroK8S
-
-## Install drill admin by helm. You need set your URL (admin is web for swagger)
-```
-URL=drill-admin.10.66.218.100.sslip.io
-helm install -n drill --set persistence.enabled=true,ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ drill-admin drill4j/admin
-```
-
-## Install drill admin-ui by helm. You need set your URL
-```
-URL=drill-admin-ui.10.66.218.100.sslip.io
-helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ drill-admin-ui drill4j/admin-ui
-```
-
-## Install example-app by helm. You need set your URL
-```
-URL=example-app.10.66.218.100.sslip.io
-helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ example-app drill4j/example-app
-```
-
 Install in Kubernetes on Cloud
 
 # Installation NGINX Ingress Controller
@@ -50,7 +30,7 @@ helm install ingress-nginx ingress-nginx/ingress-nginx
 ## Get public IP address of Ingress Controller
 PUBLICIP=xx.xx.xx.xx
 ## Change . to - in public ip address. Create new variable $URL
-PUBLICIPDASH=xx-xx-xx-xx
+export PUBLICIPDASH=xx-xx-xx-xx
 
 ## Create variable for URL of admin
 ## Install drill admin by helm. You need set your URL (admin is web for swagger)
@@ -72,3 +52,5 @@ helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URLADMIN
 URLEXAMPLEAPP=exampleapp.$PUBLICIPDASH.my.local-ip.co
 helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URLEXAMPLEAPP,ingress.hosts[0].paths[0].path=/ exampleapp drill4j/example-app
 ```
+
+For development helm-chart read [Development](Development.md)
