@@ -2,10 +2,10 @@ apiVersion: v1
 entries:
   admin:
   - apiVersion: v2
-    appVersion: 0.7.0-95
-    created: "2021-06-21T19:20:12.9558421+06:00"
+    appVersion: 0.7.0-111
+    created: "2021-06-22T14:06:59.7602677+06:00"
     description: A Helm chart for Kubernetes
-    digest: 138fc62e28723d0a626e6c21e7f611469b92fda084fe4bd117467c3e96904270
+    digest: 165beeb86d36eb231b3ebac2271e16ef9154e68082d32642c556c07884ee1fdb
     name: admin
     type: application
     urls:
@@ -13,10 +13,10 @@ entries:
     version: 0.1.0
   admin-ui:
   - apiVersion: v2
-    appVersion: 0.7.0-267
-    created: "2021-06-21T19:20:12.9561502+06:00"
+    appVersion: 0.7.1
+    created: "2021-06-22T14:06:59.7606298+06:00"
     description: A Helm chart for Kubernetes
-    digest: 49d5ac4e14e244b9879b71475c778b28df1a299f43d52dda7d119b821c73293c
+    digest: 53aef2b9fac13ad6d839137e657f2d25033ceb4a6e84c6568a1163cd36662c88
     name: admin-ui
     type: application
     urls:
@@ -25,12 +25,12 @@ entries:
   example-app:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2021-06-21T19:20:12.9564546+06:00"
+    created: "2021-06-22T14:06:59.7609134+06:00"
     description: A Helm chart for Kubernetes
-    digest: f0e1cbfe538303efd51c5350d3d167627685577bb629a44ac4ff35af8bfb69a6
+    digest: d25a52dc21f227bd9427feec7ea4c2059240987e744f75a36294feec819250bb
     name: example-app
     type: application
     urls:
     - https://raw.githubusercontent.com/drill4j/helm-charts/main/example-app-0.1.0.tgz
     version: 0.1.0
-generated: "2021-06-21T19:20:12.9546582+06:00"
+generated: "2021-06-22T14:06:59.7589647+06:00"
