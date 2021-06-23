@@ -48,6 +48,13 @@ spec:
           ports:
             - name: port8090
               containerPort: 8090
+          startupProbe:
+            httpGet:
+              path: /apidocs/index.html?url=./openapi.json
+              port: 8090
+            failureThreshold: 30
+            periodSeconds: 10
+            initialDelaySeconds: 15
           livenessProbe:
             httpGet:
               path: /apidocs/index.html?url=./openapi.json
