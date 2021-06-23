@@ -53,4 +53,4 @@ URLEXAMPLEAPP=exampleapp.$PUBLICIPDASH.my.local-ip.co
 helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URLEXAMPLEAPP,ingress.hosts[0].paths[0].path=/ exampleapp drill4j/example-app
 ```
 
-For development helm-chart read [Development](Development.md)
+For local development of helm-chart please read [Local development](local-development.md)

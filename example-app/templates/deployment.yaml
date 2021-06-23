@@ -34,7 +34,7 @@ spec:
             - name: AUTOTEST_AGENT_VERSION
               value: 0.16.2
           name: drill-agent
-          image: drill4j/agent-download:1.9
+          image: antonpatsev/javaagent:1.0
           volumeMounts:
             - mountPath: /data
               name: agent-files
