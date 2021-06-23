@@ -22,3 +22,13 @@ helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URL,ingr
 URL=example-app.$IP.sslip.io
 helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ example-app drill4j/example-app
 ```
+
+
+# Package helm chart. Create index.yaml for helm chart.
+```
+helm package admin
+helm package admin-ui
+helm package example-app
+cd ..
+helm repo index helm-charts/ --url https://raw.githubusercontent.com/drill4j/helm-charts/main
+``` 
