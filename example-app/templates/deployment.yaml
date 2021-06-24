@@ -68,6 +68,9 @@ spec:
               command:
               - ls
               - /app/spring-petclinic.jar
+          # volumeMounts:
+          #   - mountPath: /data
+          #     name: "agent-files-{{ .Values.imagejavaagent.tag | replace "." "-" }}-javaagent-0"
           volumeMounts:
             - mountPath: /data
               name: "agent-files-{{ .Values.imagejavaagent.tag | replace "." "-" }}"
@@ -85,6 +88,7 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      # volumes:
-      # - name: agent-files
-      #   emptyDir: {}
+      volumes:
+        - name: "agent-files-{{ .Values.imagejavaagent.tag | replace "." "-" }}"
+          persistentVolumeClaim:
+            claimName: "agent-files-{{ .Values.imagejavaagent.tag | replace "." "-" }}"

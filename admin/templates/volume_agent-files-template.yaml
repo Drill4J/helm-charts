@@ -1,0 +1,25 @@
+apiVersion: "v1"
+kind: "PersistentVolumeClaim"
+metadata:
+{{- if .Values.persistentVolumeClaim.annotations }}
+  annotations:
+{{ toYaml .Values.persistentVolumeClaim.annotations | indent 4 }}
+{{- end }}
+  labels:
+    app:  "agent-files-{{ .Values.imagejavaagent.tag | replace "." "-" }}"
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    release: {{ .Release.Name }}
+  name:  "agent-files-{{ .Values.imagejavaagent.tag | replace "." "-" }}"
+spec:
+  accessModes:
+{{ toYaml .Values.persistentVolumeClaim.accessModes | indent 4 }}
+{{- if .Values.persistentVolumeClaim.storageClass }}
+{{- if (eq "-" .Values.persistentVolumeClaim.storageClass) }}
+  storageClassName: ""
+{{- else }}
+  storageClassName: "{{ .Values.persistentVolumeClaim.storageClass }}"
+{{- end }}
+{{- end }}
+  resources:
+    requests:
+      storage: "{{ .Values.persistentVolumeClaim.size }}"

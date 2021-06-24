@@ -1,11 +1,11 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: javaagent
   labels:
     {{- include "admin.labels" . | nindent 4 }}
 spec:
-  serviceName: javaagent
+  # serviceName: javaagent
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
@@ -56,23 +56,7 @@ spec:
           volumeMounts:
             - mountPath: /data
               name: "agent-files-{{ .Values.imagejavaagent.tag | replace "." "-" }}"
-  {{- if .Values.persistence.enabled }}
-  volumeClaimTemplates:
-  - metadata:
-      name: "agent-files-{{ .Values.imagejavaagent.tag | replace "." "-" }}"
-    {{- if .Values.persistence.labels.enabled }}
-      labels:
-        release: {{ .Release.Name | quote }}
-        chart: "{{ .Chart.Name }}"
-        app: "{{ template "javaagent.fullname" . }}"
-        {{- range $key, $value := .Values.labels }}
-        {{ $key }}: {{ $value | quote }}
-        {{- end }}
-    {{- end }}
-    {{- with .Values.persistence.annotations  }}
-      annotations:
-{{ toYaml . | indent 8 }}
-    {{- end }}
-    spec:
-{{ toYaml .Values.volumeClaimTemplate | indent 6 }}
-  {{- end }}
+      volumes:
+        - name: "agent-files-{{ .Values.imagejavaagent.tag | replace "." "-" }}"
+          persistentVolumeClaim:
+            claimName: "agent-files-{{ .Values.imagejavaagent.tag | replace "." "-" }}"
