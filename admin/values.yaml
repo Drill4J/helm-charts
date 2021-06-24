@@ -10,6 +10,12 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
+imagejavaagent:
+  repository: antonpatsev/javaagent
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "v0.7.0-30"
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""

@@ -33,6 +33,9 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: UPSTREAM
+              value: drill-admin.drill.svc.cluster.local:8090
           ports:
             - name: port8080
               containerPort: 8080

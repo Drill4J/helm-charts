@@ -28,16 +28,16 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-        - env:
-            - name: AGENT_VERSION
-              value: 0.7.0-30
-            - name: AUTOTEST_AGENT_VERSION
-              value: 0.16.2
-          name: drill-agent
-          image: antonpatsev/javaagent:1.0
-          volumeMounts:
-            - mountPath: /data
-              name: agent-files
+        # - env:
+        #     - name: AGENT_VERSION
+        #       value: 0.7.0-30
+        #     - name: AUTOTEST_AGENT_VERSION
+        #       value: 0.16.2
+        #   name: drill-agent
+        #   image: antonpatsev/javaagent:v0.7.0-30
+        #   volumeMounts:
+        #     - mountPath: /data
+        #       name: agent-files
         - name: {{ .Chart.Name }}
           env:
           - name: JAVA_TOOL_OPTIONS
@@ -69,8 +69,8 @@ spec:
               - ls
               - /app/spring-petclinic.jar
           volumeMounts:
-          - name: agent-files
-            mountPath: /data
+            - mountPath: /data
+              name: "agent-files-{{ .Values.imagejavaagent.tag | replace "." "-" }}"
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
@@ -85,6 +85,6 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      volumes:
-      - name: agent-files
-        emptyDir: {}
+      # volumes:
+      # - name: agent-files
+      #   emptyDir: {}
