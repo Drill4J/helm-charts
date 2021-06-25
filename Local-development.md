@@ -47,3 +47,15 @@ helm repo index helm-charts/ --url https://raw.githubusercontent.com/drill4j/hel
 cd helm-charts
 git push
 ```
+
+# Kubernetes Dashboard
+Open https://kubernetes-dashboard.10.66.218.100.sslip.io/
+
+Get token by command
+```
+kubectl -n kube-system describe secret $(
+  kubectl -n kube-system get secret | \
+  awk '/^deployment-controller-token-/{print $1}'
+) | \
+awk '$1=="token:"{print $2}'
+```
