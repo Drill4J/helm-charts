@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: autotest-extension-dispatcher
+  repository: drill4j/autotest-extension-dispatcher
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""

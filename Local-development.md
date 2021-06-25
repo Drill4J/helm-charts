@@ -38,6 +38,12 @@ URL=browser-proxy.$IP.sslip.io
 helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ browser-proxy ./browser-proxy
 ```
 
+## Install autotest-extension-dispatcher by helm. You need set your URL
+```
+URL=autotest-extension-dispatcher.$IP.sslip.io
+helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ autotest-extension-dispatcher ./autotest-extension-dispatcher
+```
+
 # Package helm chart. Create index.yaml for helm chart.
 ```
 helm package admin
