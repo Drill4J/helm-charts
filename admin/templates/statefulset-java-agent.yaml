@@ -1,16 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "admin-ui.fullname" . }}
+  name: javaagent
   labels:
-    {{- include "admin-ui.labels" . | nindent 4 }}
+    {{- include "admin.labels" . | nindent 4 }}
 spec:
+  # serviceName: javaagent
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "admin-ui.selectorLabels" . | nindent 6 }}
+      {{- include "admin.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,42 +19,26 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "admin-ui.selectorLabels" . | nindent 8 }}
+        {{- include "admin.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "admin-ui.serviceAccountName" . }}
+      serviceAccountName: {{ include "admin.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
-      initContainers:
-        - name: wait-for-drill-admin-service
-          image: groundnuty/k8s-wait-for:v1.3
-          args:
-            - "service"
-            - "-lapp.kubernetes.io/name=admin"
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          image: "{{ .Values.imagejavaagent.repository }}:{{ .Values.imagejavaagent.tag }}"
           env:
-            - name: UPSTREAM
-              value: drill-admin.drill.svc.cluster.local:8090
-          ports:
-            - name: port8080
-              containerPort: 8080
-              protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 8080
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 8080
+            - name: AGENT_VERSION
+              value: 0.7.0-30
+            - name: AUTOTEST_AGENT_VERSION
+              value: 0.16.2
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
@@ -68,3 +53,10 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+          volumeMounts:
+            - mountPath: /data
+              name: "agent-files-{{ .Values.imagejavaagent.tag | replace "." "-" }}"
+      volumes:
+        - name: "agent-files-{{ .Values.imagejavaagent.tag | replace "." "-" }}"
+          persistentVolumeClaim:
+            claimName: "agent-files-{{ .Values.imagejavaagent.tag | replace "." "-" }}"

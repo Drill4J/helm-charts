@@ -8,7 +8,7 @@ image:
   repository: drill4j/admin-ui
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "0.7.0-267"
+  tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
