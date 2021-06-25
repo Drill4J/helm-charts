@@ -32,6 +32,11 @@ URL=example-app.$IP.sslip.io
 helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ example-app ./example-app
 ```
 
+## Install browser-proxy by helm. You need set your URL
+```
+URL=browser-proxy.$IP.sslip.io
+helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ browser-proxy ./browser-proxy
+```
 
 # Package helm chart. Create index.yaml for helm chart.
 ```
