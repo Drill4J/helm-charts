@@ -26,22 +26,27 @@ URL=drill-admin-ui.$IP.sslip.io
 helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ drill-admin-ui ./admin-ui
 ```
 
-## Install example-app by helm. You need set your URL
+## Install js-agent by helm. You need set your URL
 ```
-URL=example-app.$IP.sslip.io
-helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ example-app ./example-app
+URL=js-agent.$IP.sslip.io
+helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ js-agent ./js-agent
 ```
 
 ## Install browser-proxy by helm. You need set your URL
 ```
-URL=browser-proxy.$IP.sslip.io
-helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ browser-proxy ./browser-proxy
+helm install -n drill browser-proxy ./browser-proxy
 ```
 
 ## Install autotest-extension-dispatcher by helm. You need set your URL
 ```
-URL=autotest-extension-dispatcher.$IP.sslip.io
-helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ autotest-extension-dispatcher ./autotest-extension-dispatcher
+helm install -n drill autotest-extension-dispatcher ./autotest-extension-dispatcher
+```
+
+
+## Install example-app by helm. You need set your URL
+```
+URL=example-app.$IP.sslip.io
+helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ example-app ./example-app
 ```
 
 # Package helm chart. Create index.yaml for helm chart.

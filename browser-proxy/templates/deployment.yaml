@@ -37,14 +37,14 @@ spec:
             - name: port7777
               containerPort: 7777
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 7777
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 7777
+          # livenessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: 7777
+          # readinessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: 7777
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
