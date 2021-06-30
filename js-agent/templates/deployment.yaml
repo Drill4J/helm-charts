@@ -36,7 +36,7 @@ spec:
             - name: APP_PORT
               value: "9404"
             - name: WAIT_HOSTS
-              value: [mongo:27017, drill-admin:8090"]
+              value: "js-agent-mongodb:27017, drill-admin:8090"
             - name: DRILL_ADMIN_PROTOCOL
               value: "http"
             - name: COVERAGE_SOURCE_OMIT_PREFIX
@@ -54,7 +54,7 @@ spec:
             - name: DRILL_ADMIN_HOST
               value: "drill-admin:8090"
             - name: MONGO_HOST
-              value: "mongo:27017"
+              value: "js-agent-mongodb:27017"
             - name: MONGO_DBNAME
               value: "js-agent"
             - name: DEBUG
@@ -65,8 +65,6 @@ spec:
               value: "3"
             - name: DEBUG_LOG_LEVEL
               value: "4"
-            # - name: WAIT_HOSTS
-            #   value: mongo:27017, drill-admin:8090
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: port9404
