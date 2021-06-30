@@ -65,8 +65,8 @@ spec:
               value: "3"
             - name: DEBUG_LOG_LEVEL
               value: "4"
-            - name: WAIT_HOSTS
-              value: mongo:27017, drill-admin:8090
+            # - name: WAIT_HOSTS
+            #   value: mongo:27017, drill-admin:8090
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: port9404
