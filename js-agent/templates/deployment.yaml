@@ -1,0 +1,96 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "js-agent.fullname" . }}
+  labels:
+    {{- include "js-agent.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "js-agent.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "js-agent.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "js-agent.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          env:
+            - name: APP_PORT
+              value: "9404"
+            - name: WAIT_HOSTS
+              value: [mongo:27017, drill-admin:8090"]
+            - name: DRILL_ADMIN_PROTOCOL
+              value: "http"
+            - name: COVERAGE_SOURCE_OMIT_PREFIX
+              value: "webpack:///"
+            - name: COVERAGE_SOURCE_APPEND_PREFIX
+              value: ""
+            - name: PERF_MEASUREMENT_ENABLED
+              value: ""
+            - name: PERF_DIFFS_ENABLED
+              value: ""
+            - name: DEBUG_AGENT_SERVICE_CONNECTION
+              value: "true"
+            - name: DEBUG_AGENT_SERVICE_CONNECTION_MAX_ARGS_LENGTH
+              value: "2000"
+            - name: DRILL_ADMIN_HOST
+              value: "drill-admin:8090"
+            - name: MONGO_HOST
+              value: "mongo:27017"
+            - name: MONGO_DBNAME
+              value: "js-agent"
+            - name: DEBUG
+              value: "drill:*"
+            - name: DEBUG_COLORS
+              value: "true"
+            - name: FORCE_COLOR
+              value: "3"
+            - name: DEBUG_LOG_LEVEL
+              value: "4"
+            - name: WAIT_HOSTS
+              value: mongo:27017, drill-admin:8090
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: port9404
+              containerPort: 9404
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 9404
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 9404
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
