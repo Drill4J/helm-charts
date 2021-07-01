@@ -80,3 +80,8 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+env:          
+ JS_AGENT_HOST: "js-agent"
+ JS_AST_PARSER_VERSION: "beta"
+ BUILD_VERSION: "0.5.0"

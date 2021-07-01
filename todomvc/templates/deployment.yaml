@@ -35,11 +35,11 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: JS_AGENT_HOST
-              value: "${JS_AGENT_HOST}"
+              value: "{{ .Values.JS_AGENT_HOST }}"
             - name: JS_AST_PARSER_VERSION
-              value: "${${JS_AST_PARSER_VERSION}}"
+              value: "{{ .Values.JS_AST_PARSER_VERSION }}"
             - name: BUILD_VERSION
-              value: "${SAMPLE_APP_VERSION}"
+              value: "{{ .Values.BUILD_VERSION }}"
           ports:
             - name: http
               containerPort: 8088

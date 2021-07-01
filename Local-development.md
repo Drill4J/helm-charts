@@ -26,12 +26,6 @@ URL=drill-admin-ui.$IP.sslip.io
 helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ drill-admin-ui ./admin-ui
 ```
 
-## Install js-agent by helm. You need set your URL
-```
-URL=js-agent.$IP.sslip.io
-helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ js-agent ./js-agent
-```
-
 ## Install browser-proxy by helm. You need set your URL
 ```
 helm install -n drill browser-proxy ./browser-proxy
@@ -40,6 +34,12 @@ helm install -n drill browser-proxy ./browser-proxy
 ## Install autotest-extension-dispatcher by helm. You need set your URL
 ```
 helm install -n drill autotest-extension-dispatcher ./autotest-extension-dispatcher
+```
+
+## Install js-agent by helm. You need set your URL
+```
+URL=js-agent.$IP.sslip.io
+helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ js-agent ./js-agent
 ```
 
 ## Install example-app by helm. You need set your URL
