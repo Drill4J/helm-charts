@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "todomvc.fullname" . }}
+  labels:
+    {{- include "todomvc.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 8088
+      protocol: TCP
+      name: port8088
+  selector:
+    {{- include "todomvc.selectorLabels" . | nindent 4 }}
