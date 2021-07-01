@@ -33,6 +33,13 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: JS_AGENT_HOST
+              value: "${JS_AGENT_HOST}"
+            - name: JS_AST_PARSER_VERSION
+              value: "${${JS_AST_PARSER_VERSION}}"
+            - name: BUILD_VERSION
+              value: "${SAMPLE_APP_VERSION}"
           ports:
             - name: http
               containerPort: 8088
