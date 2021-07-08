@@ -32,6 +32,12 @@ URL=js-agent.$IP.sslip.io
 helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ js-agent ./js-agent
 ```
 
+## Install example-app by helm. You need set your URL
+```
+URL=example-app.$IP.sslip.io
+helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ example-app ./example-app
+```
+
 ## Install browser-proxy by helm. You need set your URL
 ```
 helm install -n drill browser-proxy ./browser-proxy
@@ -40,13 +46,6 @@ helm install -n drill browser-proxy ./browser-proxy
 ## Install autotest-extension-dispatcher by helm. You need set your URL
 ```
 helm install -n drill autotest-extension-dispatcher ./autotest-extension-dispatcher
-```
-
-
-## Install example-app by helm. You need set your URL
-```
-URL=example-app.$IP.sslip.io
-helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ example-app ./example-app
 ```
 
 # Package helm chart. Create index.yaml for helm chart.
