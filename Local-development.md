@@ -16,25 +16,25 @@ export IP=xx-xx-xx-xx
 
 ## Install drill admin by helm. You need set your URL (admin is web for swagger)
 ```
-URL=drill-admin.$IP.sslip.io
+URL=drill-admin.$IP.my.local-ip.co
 helm install -n drill --set persistence.enabled=true,ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ drill-admin ./admin
 ```
 
 ## Install drill admin-ui by helm. You need set your URL
 ```
-URL=drill-admin-ui.$IP.sslip.io
+URL=drill-admin-ui.$IP.my.local-ip.co
 helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ drill-admin-ui ./admin-ui
 ```
 
 ## Install js-agent by helm. You need set your URL
 ```
-URL=js-agent.$IP.sslip.io
+URL=js-agent.$IP.my.local-ip.co
 helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ js-agent ./js-agent
 ```
 
 ## Install example-app by helm. You need set your URL
 ```
-URL=example-app.$IP.sslip.io
+URL=example-app.$IP.my.local-ip.co
 helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ example-app ./example-app
 ```
 
@@ -64,7 +64,7 @@ git push
 ```
 
 # Kubernetes Dashboard
-Open https://kubernetes-dashboard.10.66.218.100.sslip.io/
+Open https://kubernetes-dashboard.10.66.218.100..my.local-ip.co
 
 Get token by command
 ```
