@@ -9,10 +9,10 @@ cd helm-charts
 kubectl create namespace drill
 ```
 
-## Get ip address on ethenet card
-```
-export IP=xx.xx.xx.xx
-```
+## Get public IP address of Ingress Controller
+PUBLICIP=xx.xx.xx.xx
+## Change . to - in public ip address. Create new variable $URL
+export IP=xx-xx-xx-xx
 
 ## Install drill admin by helm. You need set your URL (admin is web for swagger)
 ```
