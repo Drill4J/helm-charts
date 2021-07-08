@@ -27,6 +27,12 @@ spec:
       serviceAccountName: {{ include "example-app.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+        - name: wait-for-drill-admin-service
+          image: groundnuty/k8s-wait-for:v1.3
+          args:
+            - "service"
+            - "-lapp.kubernetes.io/name=admin"
       containers:
         - name: {{ .Chart.Name }}
           env:
@@ -39,25 +45,15 @@ spec:
           ports:
             - name: http
               containerPort: 8080
-              # protocol: TCP
+              protocol: TCP
           livenessProbe:
             httpGet:
               path: /
               port: 8080
-          # livenessProbe:
-          #   exec:
-          #     command:
-          #     - ls
-          #     - /app/spring-petclinic.jar
           readinessProbe:
             httpGet:
               path: /
               port: 8080
-          # readinessProbe:
-          #   exec:
-          #     command:
-          #     - ls
-          #     - /app/spring-petclinic.jar
           volumeMounts:
             - mountPath: /data
               name: "agent-files-{{ .Values.imagejavaagent.tag | replace "." "-" }}"
