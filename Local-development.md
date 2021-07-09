@@ -40,7 +40,9 @@ helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URL,ingr
 
 ## Install browser-proxy by helm. You need set your URL
 ```
-helm install -n drill browser-proxy ./browser-proxy
+URL=browser-proxy.$IP.my.local-ip.co
+helm install -n drill --set persistence.enabled=true,ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ browser-proxy ./browser-proxy
+```
 ```
 
 ## Install autotest-extension-dispatcher by helm. You need set your URL
