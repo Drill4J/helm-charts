@@ -10,9 +10,9 @@ kubectl create namespace drill
 ```
 
 ## Get public IP address of Ingress Controller
-PUBLICIP=xx.xx.xx.xx
+IP=xx.xx.xx.xx
 ## Change . to - in public ip address. Create new variable $URL
-export IP=xx-xx-xx-xx
+export IP=$(echo $IP | sed 's/\./-/g')
 
 ## Install drill admin by helm. You need set your URL (admin is web for swagger)
 ```
@@ -42,7 +42,6 @@ helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URL,ingr
 ```
 URL=browser-proxy.$IP.my.local-ip.co
 helm install -n drill --set persistence.enabled=true,ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ browser-proxy ./browser-proxy
-```
 ```
 
 ## Install autotest-extension-dispatcher by helm. You need set your URL
