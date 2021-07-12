@@ -54,7 +54,10 @@ helm install -n drill autotest-extension-dispatcher ./autotest-extension-dispatc
 ```
 helm package admin
 helm package admin-ui
+helm package autotest-extension-dispatcher
+helm package browser-proxy
 helm package example-app
+helm package js-agent
 cd ..
 helm repo index helm-charts/ --url https://raw.githubusercontent.com/drill4j/helm-charts/main
 ``` 
