@@ -54,6 +54,9 @@ ingress:
     nginx.ingress.kubernetes.io/configuration-snippet: |
       proxy_set_header Upgrade "websocket";
       proxy_set_header Connection "Upgrade";
+      if ($scheme = https) {   
+        add_header  Strict-Transport-Security "max-age=0;";  
+      }
   hosts:
     - host: chart-example.local
       paths:
