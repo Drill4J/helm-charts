@@ -28,29 +28,43 @@ helm install ingress-nginx ingress-nginx/ingress-nginx
 
 # Yet another install
 ## Get public IP address of Ingress Controller
-PUBLICIP=xx.xx.xx.xx
+IP=xx.xx.xx.xx
 ## Change . to - in public ip address. Create new variable $URL
-export IP=xx-xx-xx-xx
+export IP=$(echo $IP | sed 's/\./-/g')
 
-## Create variable for URL of admin
 ## Install drill admin by helm. You need set your URL (admin is web for swagger)
 ```
 URLADMIN=admin.$IP.my.local-ip.co
 helm install -n drill --set persistence.enabled=true,ingress.enabled=true,ingress.hosts[0].host=$URLADMIN,ingress.hosts[0].paths[0].path=/ drill-admin drill4j/admin
 ```
 
-## Create variable for URL of admin-ui
 ## Install drill admin-ui by helm. You need set your URL
 ```
 URLADMINUI=adminui.$IP.my.local-ip.co
 helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URLADMINUI,ingress.hosts[0].paths[0].path=/ drill-admin-ui drill4j/admin-ui
 ```
 
-## Create variable for URL of admin-ui
+## Install js-agent by helm. You need set your URL
+```
+URL=js-agent.$IP.my.local-ip.co
+helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ js-agent drill4j/js-agent
+```
+
 ## Install example-app by helm. You need set your URL
 ```
 URLEXAMPLEAPP=exampleapp.$IP.my.local-ip.co
 helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URLEXAMPLEAPP,ingress.hosts[0].paths[0].path=/ exampleapp drill4j/example-app
+```
+
+## Install browser-proxy by helm. You need set your URL
+```
+URL=browser-proxy.$IP.my.local-ip.co
+helm install -n drill --set persistence.enabled=true,ingress.enabled=true,ingress.hosts[0].host=$URL,ingress.hosts[0].paths[0].path=/ browser-proxy drill4j/browser-proxy
+```
+
+## Install autotest-extension-dispatcher by helm. You need set your URL
+```
+helm install -n drill autotest-extension-dispatcher drill4j/autotest-extension-dispatcher
 ```
 
 For local development of helm-chart please read [Local development](local-development.md)
