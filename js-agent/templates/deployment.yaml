@@ -40,37 +40,37 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           env:
             - name: APP_PORT
-              value: "9404"
+              value: "{{ .Values.APP_PORT }}"
             - name: WAIT_HOSTS
-              value: "js-agent-mongodb:27017, drill-admin:8090"
+              value: "{{ .Values.WAIT_HOSTS }}"
             - name: DRILL_ADMIN_PROTOCOL
-              value: "http"
+              value: "{{ .Values.DRILL_ADMIN_PROTOCOL }}"
             - name: COVERAGE_SOURCE_OMIT_PREFIX
-              value: "webpack:///"
+              value: "{{ .Values.COVERAGE_SOURCE_OMIT_PREFIX }}"
             - name: COVERAGE_SOURCE_APPEND_PREFIX
-              value: ""
+              value: "{{ .Values.COVERAGE_SOURCE_APPEND_PREFIX }}"
             - name: PERF_MEASUREMENT_ENABLED
-              value: ""
+              value: "{{ .Values.PERF_MEASUREMENT_ENABLED }}"
             - name: PERF_DIFFS_ENABLED
-              value: ""
+              value: "{{ .Values.PERF_DIFFS_ENABLED }}"
             - name: DEBUG_AGENT_SERVICE_CONNECTION
-              value: "true"
+              value: "{{ .Values.DEBUG_AGENT_SERVICE_CONNECTION }}"
             - name: DEBUG_AGENT_SERVICE_CONNECTION_MAX_ARGS_LENGTH
-              value: "2000"
+              value: "{{ .Values.DEBUG_AGENT_SERVICE_CONNECTION_MAX_ARGS_LENGTH }}"
             - name: DRILL_ADMIN_HOST
-              value: "drill-admin:8090"
+              value: "{{ .Values.DRILL_ADMIN_HOST }}"
             - name: MONGO_HOST
-              value: "js-agent-mongodb:27017"
+              value: "{{ .Values.MONGO_HOST }}"
             - name: MONGO_DBNAME
-              value: "js-agent"
+              value: "{{ .Values.MONGO_DBNAME }}"
             - name: DEBUG
-              value: "drill:*"
+              value: "{{ .Values.DEBUG }}"
             - name: DEBUG_COLORS
-              value: "true"
+              value: "{{ .Values.DEBUG_COLORS }}"
             - name: FORCE_COLOR
-              value: "3"
+              value: "{{ .Values.FORCE_COLOR }}"
             - name: DEBUG_LOG_LEVEL
-              value: "4"
+              value: "{{ .Values.DEBUG_LOG_LEVEL }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: port9404
