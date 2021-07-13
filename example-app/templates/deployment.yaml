@@ -37,7 +37,7 @@ spec:
         - name: {{ .Chart.Name }}
           env:
           - name: JAVA_TOOL_OPTIONS
-            value: '"-agentpath:/data/agent/libdrill_agent.so=drillInstallationDir=/data/agent,adminAddress=drill-admin:8090,agentId=pet,buildVersion=0.1.0,logLevel=DEBUG"'
+            value: "{{ .Values.JAVA_TOOL_OPTIONS }}"
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
