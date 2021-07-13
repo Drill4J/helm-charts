@@ -70,6 +70,7 @@ helm install --atomic -n drill \
 --set ingress.enabled=true \
 --set ingress.hosts[0].host=$URLEXAMPLEAPP \
 --set ingress.hosts[0].paths[0].path=/ \
+--set replicaCount=1
 example-app ./example-app
 ```
 
