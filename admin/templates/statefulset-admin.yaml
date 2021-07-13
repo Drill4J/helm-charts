@@ -35,15 +35,15 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           env:
             - name: DRILL_AGENTS_SOCKET_TIMEOUT
-              value: "120"
+              value: "{{ .Values.DRILL_AGENTS_SOCKET_TIMEOUT }}"
             - name: DRILL_DEFAULT_PACKAGES
-              value: "org/springframework/samples/petclinic"
+              value: "{{ .Values.DRILL_DEFAULT_PACKAGES }}"
             - name: JAVA_TOOL_OPTIONS
-              value: "-Xmx2g"
+              value: "{{ .Values.JAVA_TOOL_OPTIONS }}"
             - name: LOG_LEVEL
-              value: "DEBUG"
+              value: "{{ .Values.LOG_LEVEL }}"
             - name: TEST2CODE_PLUGIN_VERSION
-              value: "0.7.0-140"
+              value: "{{ .Values.TEST2CODE_PLUGIN_VERSION }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: port8090
@@ -80,6 +80,11 @@ spec:
           volumeMounts:
             - name: drill-storage
               mountPath: /work
+  {{- if not .Values.persistence.enabled }}
+      volumes:
+        - name: drill-storage
+          emptyDir: {}
+  {{- end }}
   {{- if .Values.persistence.enabled }}
   volumeClaimTemplates:
   - metadata:
