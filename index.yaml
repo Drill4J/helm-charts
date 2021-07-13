@@ -3,9 +3,9 @@ entries:
   admin:
   - apiVersion: v2
     appVersion: 0.7.0-111
-    created: "2021-07-13T17:35:17.9565494+06:00"
+    created: "2021-07-13T18:25:05.1632549+06:00"
     description: A Helm chart for Kubernetes
-    digest: d2797e4571818832ba9a4549d12a9ff3a2a4a3945d4925fa4fbbbbab13ed474a
+    digest: dbe5b2354369a6e237e634fc7c99ff91f5df8fee1613dbf8899138aea59386b8
     name: admin
     type: application
     urls:
@@ -14,9 +14,9 @@ entries:
   admin-ui:
   - apiVersion: v2
     appVersion: 0.7.1
-    created: "2021-07-13T17:35:17.9579055+06:00"
+    created: "2021-07-13T18:25:05.1646029+06:00"
     description: A Helm chart for Kubernetes
-    digest: d4e4f750c7b05370fa4327edd1dc6c10a34219445bcd6c029e13fd5a6f24c861
+    digest: fa58314d49d169d6908203e5735a5783eea839c94b3859e39428a32474d5d5c5
     name: admin-ui
     type: application
     urls:
@@ -25,9 +25,9 @@ entries:
   autotest-extension-dispatcher:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2021-07-13T17:35:17.9591571+06:00"
+    created: "2021-07-13T18:25:05.1659588+06:00"
     description: A Helm chart for Kubernetes
-    digest: 416beb0f5bf5bc878c773ce6890c5a7889c6e8158504b53e0ef2b530d4f1c4c9
+    digest: 17c1d2f08e6901bb414c2ea71b7e0a2c9a7ed7837f2c95affabbb910726eeb8b
     name: autotest-extension-dispatcher
     type: application
     urls:
@@ -36,9 +36,9 @@ entries:
   browser-proxy:
   - apiVersion: v2
     appVersion: 0.2.0
-    created: "2021-07-13T17:35:17.9604363+06:00"
+    created: "2021-07-13T18:25:05.1672819+06:00"
     description: A Helm chart for Kubernetes
-    digest: e26edcfc3681be55e346aa3669508c7ac1b68f05157184da2431d382bd74fb33
+    digest: 604624ed7fd5f2e322ad9a42615a7b6f08c5194f61bd54fb83f5c19cb01cf61a
     name: browser-proxy
     type: application
     urls:
@@ -47,9 +47,9 @@ entries:
   example-app:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2021-07-13T17:35:17.9616325+06:00"
+    created: "2021-07-13T18:25:05.1685557+06:00"
     description: A Helm chart for Kubernetes
-    digest: ab1c1995c5a17827d2cd39fadbdc2044b6839906265adec6d89ca4699a659c98
+    digest: 8facc40a0d862d23adde29376065d07b2df78028ed164301c8b875c8f39ae245
     name: example-app
     type: application
     urls:
@@ -58,16 +58,16 @@ entries:
   js-agent:
   - apiVersion: v1
     appVersion: 0.2.0-feature-block-coverage.1
-    created: "2021-07-13T17:35:17.9664307+06:00"
+    created: "2021-07-13T18:25:05.1734971+06:00"
     dependencies:
     - name: mongodb
       repository: https://charts.bitnami.com/bitnami
       version: 10.20.5
     description: A Helm chart for Kubernetes
-    digest: 3556a8d06de43167b67062161ada791a5f3d7a7883a71706d160b9e08befd4d5
+    digest: 426de0017ee4d9b87e38ec6bae468cb476bcbf5700c3a1c287376a2a74c43009
     name: js-agent
     type: application
     urls:
     - https://raw.githubusercontent.com/drill4j/helm-charts/main/js-agent-0.1.6.tgz
     version: 0.1.6
-generated: "2021-07-13T17:35:17.9550449+06:00"
+generated: "2021-07-13T18:25:05.1616858+06:00"
