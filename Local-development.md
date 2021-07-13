@@ -17,36 +17,66 @@ export IP=$(echo $IP | sed 's/\./-/g')
 ## Install drill admin by helm. You need set your URL (admin is web for swagger)
 ```
 URLADMIN=drill-admin.$IP.my.local-ip.co
-helm install -n drill --set persistence.enabled=true,ingress.enabled=true,ingress.hosts[0].host=$URLADMIN,ingress.hosts[0].paths[0].path=/ drill-admin ./admin
+helm install --atomic -n drill \
+--set persistence.enabled=false \
+--set ingress.enabled=true \
+--set ingress.hosts[0].host=$URLADMIN \
+--set ingress.hosts[0].paths[0].path=/ \
+--set DRILL_AGENTS_SOCKET_TIMEOUT="140" \
+--set DRILL_DEFAULT_PACKAGES="com/epam/ta/reportportal" \
+--set JAVA_TOOL_OPTIONS="-Xmx2g" \
+--set LOG_LEVEL="DEBUG" \
+--set TEST2CODE_PLUGIN_VERSION="0.7.0-140" \
+--set image.tag=latest \
+drill-admin ./admin
 ```
 
 ## Install drill admin-ui by helm. You need set your URL
 ```
 URLADMINUI=drill-admin-ui.$IP.my.local-ip.co
-helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URLADMINUI,ingress.hosts[0].paths[0].path=/ drill-admin-ui ./admin-ui
-```
-
-## Install js-agent by helm. You need set your URL
-```
-URLJSAGENT=js-agent.$IP.my.local-ip.co
-helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URLJSAGENT,ingress.hosts[0].paths[0].path=/ js-agent ./js-agent
-```
-
-## Install example-app by helm. You need set your URL
-```
-URLEXAMPLEAPP=example-app.$IP.my.local-ip.co
-helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URLEXAMPLEAPP,ingress.hosts[0].paths[0].path=/ example-app ./example-app
+helm install --atomic -n drill \
+--set ingress.enabled=true \
+--set ingress.hosts[0].host=$URLADMINUI \
+--set ingress.hosts[0].paths[0].path=/ \
+--set image.tag=latest \
+drill-admin-ui ./admin-ui
 ```
 
 ## Install browser-proxy by helm. You need set your URL
 ```
 URLBROWSERPROXY=browser-proxy.$IP.my.local-ip.co
-helm install -n drill --set persistence.enabled=true,ingress.enabled=true,ingress.hosts[0].host=$URLBROWSERPROXY,ingress.hosts[0].paths[0].path=/ browser-proxy ./browser-proxy
+helm install --atomic -n drill \
+--set persistence.enabled=false \
+--set ingress.enabled=true \
+--set ingress.hosts[0].host=$URLBROWSERPROXY \
+--set ingress.hosts[0].paths[0].path=/ \
+browser-proxy ./browser-proxy
+```
+
+## Install js-agent by helm. You need set your URL
+```
+URLJSAGENT=js-agent.$IP.my.local-ip.co
+helm install --atomic -n drill \
+--set ingress.enabled=true \
+--set ingress.hosts[0].host=$URLJSAGENT \
+--set ingress.hosts[0].paths[0].path=/ \
+js-agent ./js-agent
+```
+
+## Install example-app by helm. You need set your URL
+```
+URLEXAMPLEAPP=example-app.$IP.my.local-ip.co
+helm install --atomic -n drill \
+--set ingress.enabled=true \
+--set ingress.hosts[0].host=$URLEXAMPLEAPP \
+--set ingress.hosts[0].paths[0].path=/ \
+example-app ./example-app
 ```
 
 ## Install autotest-extension-dispatcher by helm. You need set your URL
 ```
-helm install -n drill autotest-extension-dispatcher ./autotest-extension-dispatcher
+helm install --atomic -n drill \
+autotest-extension-dispatcher ./autotest-extension-dispatcher
 ```
 
 # Package helm chart. Create index.yaml for helm chart.
