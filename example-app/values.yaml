@@ -90,3 +90,5 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+JAVA_TOOL_OPTIONS: "-agentpath:/data/agent/libdrill_agent.so=drillInstallationDir=/data/agent,adminAddress=drill-admin:8090,agentId=pet,buildVersion=0.1.0,logLevel=DEBUG"
