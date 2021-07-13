@@ -3,71 +3,71 @@ entries:
   admin:
   - apiVersion: v2
     appVersion: 0.7.0-111
-    created: "2021-07-13T20:35:18.1169944+06:00"
+    created: "2021-07-13T20:47:29.4481746+06:00"
     description: A Helm chart for Kubernetes
-    digest: 25c767e822c40a3a835dfe0411f4a84e781f190f41d15a469f46ec3d4d26f787
+    digest: 7adb164aaa7b586506050dac72dc060356564556db1e02450b2788204096ba1f
     name: admin
     type: application
     urls:
-    - https://raw.githubusercontent.com/drill4j/helm-charts/main/admin-0.1.7.tgz
-    version: 0.1.7
+    - https://raw.githubusercontent.com/drill4j/helm-charts/main/admin-0.1.8.tgz
+    version: 0.1.8
   admin-ui:
   - apiVersion: v2
     appVersion: 0.7.1
-    created: "2021-07-13T20:35:18.1177357+06:00"
+    created: "2021-07-13T20:47:29.4488862+06:00"
     description: A Helm chart for Kubernetes
-    digest: 3e2f4b226dd39ee726e9a0565be2def3a98ba2171cc4e022d56bd35429ee9e0c
+    digest: 82e5a08056473e682da030a7aa3370d4be5334e58c14d82bc8271ba0e06e3230
     name: admin-ui
     type: application
     urls:
-    - https://raw.githubusercontent.com/drill4j/helm-charts/main/admin-ui-0.1.7.tgz
-    version: 0.1.7
+    - https://raw.githubusercontent.com/drill4j/helm-charts/main/admin-ui-0.1.8.tgz
+    version: 0.1.8
   autotest-extension-dispatcher:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2021-07-13T20:35:18.1184651+06:00"
+    created: "2021-07-13T20:47:29.4496409+06:00"
     description: A Helm chart for Kubernetes
-    digest: 9986910501a79ab0cf4b9cead9bebc583ca254737101d52e77b4101e2870690c
+    digest: 00814ebbc4a3e60f88778c0830a41d6590de14a466fd4451e1c764b10dd7e2fe
     name: autotest-extension-dispatcher
     type: application
     urls:
-    - https://raw.githubusercontent.com/drill4j/helm-charts/main/autotest-extension-dispatcher-0.1.7.tgz
-    version: 0.1.7
+    - https://raw.githubusercontent.com/drill4j/helm-charts/main/autotest-extension-dispatcher-0.1.8.tgz
+    version: 0.1.8
   browser-proxy:
   - apiVersion: v2
     appVersion: 0.2.0
-    created: "2021-07-13T20:35:18.1191718+06:00"
+    created: "2021-07-13T20:47:29.450348+06:00"
     description: A Helm chart for Kubernetes
-    digest: 0271902560495491236b738dc53916d0b12b319346a4d01e89a93cf7c9b0368d
+    digest: 651fd1b9680c9db7b2b2474bba2b3ccf8a0b196cd617e7798f393badd8ac0fcd
     name: browser-proxy
     type: application
     urls:
-    - https://raw.githubusercontent.com/drill4j/helm-charts/main/browser-proxy-0.1.7.tgz
-    version: 0.1.7
+    - https://raw.githubusercontent.com/drill4j/helm-charts/main/browser-proxy-0.1.8.tgz
+    version: 0.1.8
   example-app:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2021-07-13T20:35:18.1199378+06:00"
+    created: "2021-07-13T20:47:29.4510888+06:00"
     description: A Helm chart for Kubernetes
-    digest: a1f3505ea680012388ac08ef1a72826124d38fcfa62994b98ee7150577adb57a
+    digest: 152770a76089714e6e6e35662cf1f20e2ddc694a22ddbbaaa6a428e607a57516
     name: example-app
     type: application
     urls:
-    - https://raw.githubusercontent.com/drill4j/helm-charts/main/example-app-0.1.7.tgz
-    version: 0.1.7
+    - https://raw.githubusercontent.com/drill4j/helm-charts/main/example-app-0.1.8.tgz
+    version: 0.1.8
   js-agent:
   - apiVersion: v1
     appVersion: 0.2.0-feature-block-coverage.1
-    created: "2021-07-13T20:35:18.1241215+06:00"
+    created: "2021-07-13T20:47:29.4551461+06:00"
     dependencies:
     - name: mongodb
       repository: https://charts.bitnami.com/bitnami
       version: 10.20.5
     description: A Helm chart for Kubernetes
-    digest: c0ac7f21068b344de12dbadf8e2a69630b978ec6826c94a2a498b6829880d5a4
+    digest: b633e99ff0ad311a66b4092c979f9b353c95e0ac0b90122724a19f328b4ff6aa
     name: js-agent
     type: application
     urls:
-    - https://raw.githubusercontent.com/drill4j/helm-charts/main/js-agent-0.1.7.tgz
-    version: 0.1.7
-generated: "2021-07-13T20:35:18.1158903+06:00"
+    - https://raw.githubusercontent.com/drill4j/helm-charts/main/js-agent-0.1.8.tgz
+    version: 0.1.8
+generated: "2021-07-13T20:47:29.4472401+06:00"
