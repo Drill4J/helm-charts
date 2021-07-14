@@ -51,8 +51,8 @@ ingress:
     nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
     nginx.ingress.kubernetes.io/proxy-connect-timeout: "600"
     nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/websocket-services: admin-ui
-    nginx.org/websocket-services: admin-ui
+    nginx.ingress.kubernetes.io/websocket-services: drill-admin-ui
+    nginx.org/websocket-services: drill-admin-ui
     nginx.ingress.kubernetes.io/configuration-snippet: |
       send_timeout 600s;
       proxy_set_header Upgrade "websocket";
