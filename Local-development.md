@@ -99,7 +99,7 @@ git push
 ```
 
 # Kubernetes Dashboard
-Open https://kubernetes-dashboard.10.66.218.100..my.local-ip.co
+Open https://kubernetes-dashboard.10.66.218.100.my.local-ip.co
 
 Get token by command
 ```
