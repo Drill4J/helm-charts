@@ -12,11 +12,11 @@ kubectl create namespace drill
 ## Get public IP address of Ingress Controller
 IP=xx.xx.xx.xx
 ## Change . to - in public ip address. Create new variable $URL
-export IP=$(echo $IP | sed 's/\./-/g')
+## export IP=$(echo $IP | sed 's/\./-/g')
 
 ## Install drill admin by helm. You need set your URL (admin is web for swagger)
 ```
-URLADMIN=drill-admin.$IP.my.local-ip.co
+URLADMIN=drill-admin.$IP.sslip.io
 helm install --atomic -n drill \
 --set persistence.enabled=false \
 --set ingress.enabled=true \
@@ -33,7 +33,7 @@ drill-admin ./admin
 
 ## Install drill admin-ui by helm. You need set your URL
 ```
-URLADMINUI=drill-admin-ui.$IP.my.local-ip.co
+URLADMINUI=drill-admin-ui.$IP.sslip.io
 helm install --atomic -n drill \
 --set ingress.enabled=true \
 --set ingress.hosts[0].host=$URLADMINUI \
@@ -44,7 +44,7 @@ drill-admin-ui ./admin-ui
 
 ## Install browser-proxy by helm. You need set your URL
 ```
-URLBROWSERPROXY=browser-proxy.$IP.my.local-ip.co
+URLBROWSERPROXY=browser-proxy.$IP.sslip.io
 helm install --atomic -n drill \
 --set persistence.enabled=false \
 --set ingress.enabled=true \
@@ -55,7 +55,7 @@ browser-proxy ./browser-proxy
 
 ## Install js-agent by helm. You need set your URL
 ```
-URLJSAGENT=js-agent.$IP.my.local-ip.co
+URLJSAGENT=js-agent.$IP.sslip.io
 helm install --atomic -n drill \
 --set ingress.enabled=true \
 --set ingress.hosts[0].host=$URLJSAGENT \
@@ -65,12 +65,12 @@ js-agent ./js-agent
 
 ## Install example-app by helm. You need set your URL
 ```
-URLEXAMPLEAPP=example-app.$IP.my.local-ip.co
+URLEXAMPLEAPP=example-app.$IP.sslip.io
 helm install --atomic -n drill \
 --set ingress.enabled=true \
 --set ingress.hosts[0].host=$URLEXAMPLEAPP \
 --set ingress.hosts[0].paths[0].path=/ \
---set replicaCount=1
+--set replicaCount=1 \
 example-app ./example-app
 ```
 
@@ -99,7 +99,7 @@ git push
 ```
 
 # Kubernetes Dashboard
-Open https://kubernetes-dashboard.10.66.218.100.my.local-ip.co
+Open https://kubernetes-dashboard.10.66.218.100.sslip.io
 
 Get token by command
 ```
