@@ -26,20 +26,9 @@ helm install --atomic -n drill \
 --set DRILL_DEFAULT_PACKAGES="com/epam/ta/reportportal" \
 --set JAVA_TOOL_OPTIONS="-Xmx2g" \
 --set LOG_LEVEL="DEBUG" \
---set TEST2CODE_PLUGIN_VERSION="0.7.0-140" \
+--set TEST2CODE_PLUGIN_VERSION="0.8.0-7" \
 --set image.tag=latest \
 drill-admin ./admin
-```
-
-## Install drill admin-ui by helm. You need set your URL
-```
-URLADMINUI=drill-admin-ui.$IP.sslip.io
-helm install --atomic -n drill \
---set ingress.enabled=true \
---set ingress.hosts[0].host=$URLADMINUI \
---set ingress.hosts[0].paths[0].path=/ \
---set image.tag=latest \
-drill-admin-ui ./admin-ui
 ```
 
 ## Install browser-proxy by helm. You need set your URL
@@ -51,6 +40,17 @@ helm install --atomic -n drill \
 --set ingress.hosts[0].host=$URLBROWSERPROXY \
 --set ingress.hosts[0].paths[0].path=/ \
 browser-proxy ./browser-proxy
+```
+
+## Install drill admin-ui by helm. You need set your URL
+```
+URLADMINUI=drill-admin-ui.$IP.sslip.io
+helm install --atomic -n drill \
+--set ingress.enabled=true \
+--set ingress.hosts[0].host=$URLADMINUI \
+--set ingress.hosts[0].paths[0].path=/ \
+--set image.tag=latest \
+drill-admin-ui ./admin-ui
 ```
 
 ## Install js-agent by helm. You need set your URL
@@ -99,7 +99,7 @@ git push
 ```
 
 # Kubernetes Dashboard
-Open https://kubernetes-dashboard.10.66.218.100.sslip.io
+Open https://kubernetes-dashboard.xx.xx.xx.xx.sslip.io
 
 Get token by command
 ```
