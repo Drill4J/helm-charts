@@ -33,8 +33,6 @@ spec:
           args:
             - "service"
             - "-lapp.kubernetes.io/name=admin"
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
