@@ -23,6 +23,10 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
+rbac:
+  # Specifies whether a rbac should be created
+  create: true
+
 podAnnotations: {}
 
 podSecurityContext: {}
@@ -60,6 +64,9 @@ ingress:
       send_timeout 3600s;
       proxy_set_header Upgrade $http_upgrade;
       proxy_set_header Connection $connection_upgrade;
+      if ($scheme = https) {   
+        add_header  Strict-Transport-Security "max-age=0;";  
+      }
   hosts:
     - host: chart-example.local
       paths:
