@@ -3,7 +3,8 @@ kind: Deployment
 metadata:
   name: javaagent
   labels:
-    {{- include "admin.labels" . | nindent 4 }}
+    app.kubernetes.io/name: admin-javaagent
+    app.kubernetes.io/instance: drill-admin-javaagent
 spec:
   # serviceName: javaagent
   {{- if not .Values.autoscaling.enabled }}
@@ -11,7 +12,8 @@ spec:
   {{- end }}
   selector:
     matchLabels:
-      {{- include "admin.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/name: admin-javaagent
+      app.kubernetes.io/instance: drill-admin-javaagent
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -19,7 +21,8 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "admin.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/name: admin-javaagent
+        app.kubernetes.io/instance: drill-admin-javaagent
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
