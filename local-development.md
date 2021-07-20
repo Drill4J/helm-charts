@@ -16,11 +16,10 @@ IP=xx.xx.xx.xx
 
 ## Install drill admin by helm. You need set your URL (admin is web for swagger)
 ```
-URLADMIN=drill-admin.$IP.sslip.io
 helm install --atomic -n drill \
 --set persistence.enabled=false \
 --set ingress.enabled=true \
---set ingress.hosts[0].host=$URLADMIN \
+--set ingress.hosts[0].host=drill-admin.$IP.sslip.io \
 --set ingress.hosts[0].paths[0].path=/ \
 --set DRILL_AGENTS_SOCKET_TIMEOUT="140" \
 --set DRILL_DEFAULT_PACKAGES="com/epam/ta/reportportal" \
@@ -33,21 +32,19 @@ drill-admin ./admin
 
 ## Install browser-proxy by helm. You need set your URL
 ```
-URLBROWSERPROXY=browser-proxy.$IP.sslip.io
 helm install --atomic -n drill \
 --set persistence.enabled=false \
 --set ingress.enabled=true \
---set ingress.hosts[0].host=$URLBROWSERPROXY \
+--set ingress.hosts[0].host=browser-proxy.$IP.sslip.io \
 --set ingress.hosts[0].paths[0].path=/ \
 browser-proxy ./browser-proxy
 ```
 
 ## Install drill admin-ui by helm. You need set your URL
 ```
-URLADMINUI=drill-admin-ui.$IP.sslip.io
 helm install --atomic -n drill \
 --set ingress.enabled=true \
---set ingress.hosts[0].host=$URLADMINUI \
+--set ingress.hosts[0].host=drill-admin-ui.$IP.sslip.io \
 --set ingress.hosts[0].paths[0].path=/ \
 --set image.tag=latest \
 drill-admin-ui ./admin-ui
@@ -55,20 +52,18 @@ drill-admin-ui ./admin-ui
 
 ## Install js-agent by helm. You need set your URL
 ```
-URLJSAGENT=js-agent.$IP.sslip.io
 helm install --atomic -n drill \
 --set ingress.enabled=true \
---set ingress.hosts[0].host=$URLJSAGENT \
+--set ingress.hosts[0].host=js-agent.$IP.sslip.io \
 --set ingress.hosts[0].paths[0].path=/ \
 js-agent ./js-agent
 ```
 
 ## Install example-app by helm. You need set your URL
 ```
-URLEXAMPLEAPP=example-app.$IP.sslip.io
 helm install --atomic -n drill \
 --set ingress.enabled=true \
---set ingress.hosts[0].host=$URLEXAMPLEAPP \
+--set ingress.hosts[0].host=example-app.$IP.sslip.io \
 --set ingress.hosts[0].paths[0].path=/ \
 --set replicaCount=1 \
 example-app ./example-app
