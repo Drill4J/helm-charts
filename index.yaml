@@ -3,7 +3,17 @@ entries:
   admin:
   - apiVersion: v2
     appVersion: 0.7.0-111
-    created: "2021-07-20T13:42:42.861735+06:00"
+    created: "2021-07-20T22:42:00.4956616+06:00"
+    description: A Helm chart for Kubernetes
+    digest: cc4a5ac4d7e57adb9ff7e065f58852a4c3786852b80dd9c98f004cfdb861a881
+    name: admin
+    type: application
+    urls:
+    - https://raw.githubusercontent.com/drill4j/helm-charts/main/admin-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 0.7.0-111
+    created: "2021-07-20T22:42:00.4942396+06:00"
     description: A Helm chart for Kubernetes
     digest: 9f48127239f3d9504e52d53b13400c3504391ffa3ab056622df31d0e99d918a4
     name: admin
@@ -14,7 +24,17 @@ entries:
   admin-ui:
   - apiVersion: v2
     appVersion: 0.7.1
-    created: "2021-07-20T13:42:42.8628295+06:00"
+    created: "2021-07-20T22:42:00.4983671+06:00"
+    description: A Helm chart for Kubernetes
+    digest: 6a6d68a0f7078e899e0be3472d34f6894874fc0c6eb40e8301ab1b93da412ed3
+    name: admin-ui
+    type: application
+    urls:
+    - https://raw.githubusercontent.com/drill4j/helm-charts/main/admin-ui-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 0.7.1
+    created: "2021-07-20T22:42:00.497058+06:00"
     description: A Helm chart for Kubernetes
     digest: e863945b8ad5d80eb9645e509bc7c4a105f613fbbcaf4b1a92ad72630d58cbb6
     name: admin-ui
@@ -25,7 +45,17 @@ entries:
   autotest-extension-dispatcher:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2021-07-20T13:42:42.8636726+06:00"
+    created: "2021-07-20T22:42:00.5009054+06:00"
+    description: A Helm chart for Kubernetes
+    digest: 0a708b5626c356f077e00d5ff388bfa836ac39ae8e367a4b94e139264ce90fe3
+    name: autotest-extension-dispatcher
+    type: application
+    urls:
+    - https://raw.githubusercontent.com/drill4j/helm-charts/main/autotest-extension-dispatcher-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2021-07-20T22:42:00.4996975+06:00"
     description: A Helm chart for Kubernetes
     digest: d084b7f805d1adc72b4fe3022fee17ffbf593059b0b9782bd3afc22c67c499e2
     name: autotest-extension-dispatcher
@@ -36,7 +66,17 @@ entries:
   browser-proxy:
   - apiVersion: v2
     appVersion: 0.2.0
-    created: "2021-07-20T13:42:42.8644214+06:00"
+    created: "2021-07-20T22:42:00.5032229+06:00"
+    description: A Helm chart for Kubernetes
+    digest: af831e513e2b9490d28932c139ad3efa51b11aee2127a7d8b06d2af6b25bf3ca
+    name: browser-proxy
+    type: application
+    urls:
+    - https://raw.githubusercontent.com/drill4j/helm-charts/main/browser-proxy-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 0.2.0
+    created: "2021-07-20T22:42:00.5021032+06:00"
     description: A Helm chart for Kubernetes
     digest: 40ac1ede6b2af1c5f39ceaca7232075a2a57d0c4c5895d3bec29e91bbf69b574
     name: browser-proxy
@@ -47,7 +87,17 @@ entries:
   example-app:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2021-07-20T13:42:42.865133+06:00"
+    created: "2021-07-20T22:42:00.5057549+06:00"
+    description: A Helm chart for Kubernetes
+    digest: a8775a8e3d5a4991252a05e22bcc00296436f1bb82a2e38d37c30337194fc78d
+    name: example-app
+    type: application
+    urls:
+    - https://raw.githubusercontent.com/drill4j/helm-charts/main/example-app-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2021-07-20T22:42:00.504575+06:00"
     description: A Helm chart for Kubernetes
     digest: 5c0aeba648253cf3700e5d628b2e54890f27ea3506a052cf1637b5c8b1174c54
     name: example-app
@@ -58,7 +108,21 @@ entries:
   js-agent:
   - apiVersion: v1
     appVersion: 0.2.0-feature-block-coverage.1
-    created: "2021-07-20T13:42:42.8696778+06:00"
+    created: "2021-07-20T22:42:00.5142769+06:00"
+    dependencies:
+    - name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.20.5
+    description: A Helm chart for Kubernetes
+    digest: c31173ae69bc1b27fd320498081fa3359996cda56482c866bca08f57e950b923
+    name: js-agent
+    type: application
+    urls:
+    - https://raw.githubusercontent.com/drill4j/helm-charts/main/js-agent-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v1
+    appVersion: 0.2.0-feature-block-coverage.1
+    created: "2021-07-20T22:42:00.5111793+06:00"
     dependencies:
     - name: mongodb
       repository: https://charts.bitnami.com/bitnami
@@ -70,4 +134,4 @@ entries:
     urls:
     - https://raw.githubusercontent.com/drill4j/helm-charts/main/js-agent-0.1.9.tgz
     version: 0.1.9
-generated: "2021-07-20T13:42:42.8605986+06:00"
+generated: "2021-07-20T22:42:00.4930697+06:00"
