@@ -28,11 +28,16 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       initContainers:
-        - name: wait-for-drill-admin-service
-          image: groundnuty/k8s-wait-for:v1.3
-          args:
-            - "service"
-            - "-lapp.kubernetes.io/name=admin"
+        - name: javaagent
+          image: "{{ .Values.imagejavaagent.repository }}:{{ .Values.imagejavaagent.tag }}"
+          env:
+            - name: AGENT_VERSION
+              value: 0.7.0-30
+            - name: AUTOTEST_AGENT_VERSION
+              value: 0.16.2
+          volumeMounts:
+            - mountPath: /data
+              name: "agent-files-{{ .Values.imagejavaagent.tag | replace "." "-" }}"
       containers:
         - name: {{ .Chart.Name }}
           env:
@@ -80,5 +85,4 @@ spec:
       {{- end }}
       volumes:
         - name: "agent-files-{{ .Values.imagejavaagent.tag | replace "." "-" }}"
-          persistentVolumeClaim:
-            claimName: "agent-files-{{ .Values.imagejavaagent.tag | replace "." "-" }}"
+          emptyDir: {}            
