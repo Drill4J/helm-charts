@@ -66,6 +66,7 @@ helm install --atomic -n drill \
 --set ingress.hosts[0].host=example-app.$IP.sslip.io \
 --set ingress.hosts[0].paths[0].path=/ \
 --set replicaCount=1 \
+--set AGENT_VERSION="0.7.0" \
 example-app ./example-app
 ```
 
