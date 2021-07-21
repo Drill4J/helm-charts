@@ -14,7 +14,7 @@ imagejavaagent:
   repository: antonpatsev/javaagent
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v0.7.0-31"
+  tag: "8104-17"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -96,3 +96,31 @@ tolerations: []
 affinity: {}
 
 JAVA_TOOL_OPTIONS: "-agentpath:/data/agent/libdrill_agent.so=drillInstallationDir=/data/agent,adminAddress=drill-admin:8090,agentId=pet,buildVersion=0.1.0,logLevel=DEBUG"
+
+
+persistence:
+  enabled: true
+  labels:
+    # Add default labels for the volumeClaimTemplate of the StatefulSet
+    enabled: false
+  annotations: {}
+
+volumeClaimTemplate:
+  accessModes: [ "ReadWriteOnce" ]
+  resources:
+    requests:
+      storage: 1Gi
+
+persistentVolumeClaim:
+  annotations: {}
+
+  accessModes:
+    - ReadWriteOnce
+  size: "100Mi"
+  ## If defined, storageClassName: <storageClass>
+  ## If set to "-", storageClassName: "", which disables dynamic provisioning
+  ## If undefined (the default) or set to null, no storageClassName spec is
+  ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+  ##   GKE, AWS & OpenStack)
+  ##
+  # storageClass: "-"
