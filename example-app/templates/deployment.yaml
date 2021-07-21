@@ -32,9 +32,9 @@ spec:
           image: "{{ .Values.imagejavaagent.repository }}:{{ .Values.imagejavaagent.tag }}"
           env:
             - name: AGENT_VERSION
-              value: 0.7.0-30
+              value: "{{ .Values.AGENT_VERSION }}"
             - name: AUTOTEST_AGENT_VERSION
-              value: 0.16.2
+              value: "{{ .Values.AUTOTEST_AGENT_VERSION }}"
           volumeMounts:
             - mountPath: /data
               name: "agent-files-{{ .Values.imagejavaagent.tag | replace "." "-" }}"
