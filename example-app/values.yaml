@@ -14,7 +14,7 @@ imagejavaagent:
   repository: antonpatsev/javaagent
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "8104-17"
+  tag: "8104-39"
 
 imagePullSecrets: []
 nameOverride: ""
