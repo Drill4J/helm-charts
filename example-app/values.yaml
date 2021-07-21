@@ -124,3 +124,6 @@ persistentVolumeClaim:
   ##   GKE, AWS & OpenStack)
   ##
   # storageClass: "-"
+
+AGENT_VERSION: "0.7.0"
+AUTOTEST_AGENT_VERSION: "0.16.2"
