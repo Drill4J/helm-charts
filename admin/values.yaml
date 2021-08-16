@@ -90,7 +90,8 @@ persistence:
   labels:
     # Add default labels for the volumeClaimTemplate of the StatefulSet
     enabled: false
-  annotations: {}
+  annotations:
+    "helm.sh/resource-policy": keep
 
 volumeClaimTemplate:
   accessModes: [ "ReadWriteOnce" ]
