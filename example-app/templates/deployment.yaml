@@ -51,21 +51,21 @@ spec:
             - name: http
               containerPort: 8080
               protocol: TCP
-          startupProbe:
-            httpGet:
-              path: /
-              port: 8080
-            failureThreshold: 30
-            periodSeconds: 10
-            initialDelaySeconds: 15
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 8080
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 8080
+          # startupProbe:
+          #   httpGet:
+          #     path: /
+          #     port: 8080
+          #   failureThreshold: 30
+          #   periodSeconds: 10
+          #   initialDelaySeconds: 15
+          # livenessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: 8080
+          # readinessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: 8080
           volumeMounts:
             - mountPath: /data
               name: "agent-files-{{ .Values.imagejavaagent.tag | replace "." "-" }}"
