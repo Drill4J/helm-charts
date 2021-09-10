@@ -53,18 +53,15 @@ spec:
               protocol: TCP
           startupProbe:
             tcpSocket:
-              path: /
               port: 8080
             failureThreshold: 30
             periodSeconds: 10
             initialDelaySeconds: 15
           livenessProbe:
             tcpSocket:
-              path: /
               port: 8080
           readinessProbe:
             tcpSocket:
-              path: /
               port: 8080
           volumeMounts:
             - mountPath: /data
