@@ -52,16 +52,19 @@ spec:
               containerPort: 8080
               protocol: TCP
           startupProbe:
-            tcpSocket:
+            httpGet:
+              path: /
               port: 8080
             failureThreshold: 30
             periodSeconds: 10
             initialDelaySeconds: 15
           livenessProbe:
-            tcpSocket:
+            httpGet:
+              path: /
               port: 8080
           readinessProbe:
-            tcpSocket:
+            httpGet:
+              path: /
               port: 8080
           volumeMounts:
             - mountPath: /data
