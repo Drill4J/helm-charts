@@ -51,16 +51,12 @@ spec:
             - name: http
               containerPort: 8080
               protocol: TCP
-          startupProbe:
-            tcpSocket:
-              port: 8080
-            failureThreshold: 30
-            periodSeconds: 10
-            initialDelaySeconds: 15
           livenessProbe:
+            initialDelaySeconds: 15
             tcpSocket:
               port: 8080
           readinessProbe:
+            initialDelaySeconds: 15
             tcpSocket:
               port: 8080
           volumeMounts:
