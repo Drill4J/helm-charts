@@ -5,6 +5,24 @@
 ![Lines of code](https://img.shields.io/tokei/lines/github/Drill4J/helm-charts)
 ![YouTube Channel Views](https://img.shields.io/youtube/channel/views/UCJtegUnUHr0bO6icF1CYjKw?style=social)
 
+
+- [helm charts for install drill-admin, drill-admin-ui, example-app](#helm-charts-for-install-drill-admin--drill-admin-ui--example-app)
+  * [Requirements:](#requirements-)
+  * [create namespace](#create-namespace)
+  * [Add helm repo drill4j](#add-helm-repo-drill4j)
+- [Installation NGINX Ingress Controller](#installation-nginx-ingress-controller)
+- [Yet another install](#yet-another-install)
+  * [Get External IP Kubernetes NGINX Ingress Controller service](#get-external-ip-kubernetes-nginx-ingress-controller-service)
+  * [Check external IP](#check-external-ip)
+- [Install Drill](#install-drill)
+  * [Install drill admin by helm. You need set your URL (admin is web for swagger)](#install-drill-admin-by-helm-you-need-set-your-url--admin-is-web-for-swagger-)
+  * [Install drill admin-ui by helm. You need set your URL](#install-drill-admin-ui-by-helm-you-need-set-your-url)
+  * [Install js-agent by helm. You need set your URL](#install-js-agent-by-helm-you-need-set-your-url)
+  * [Install example-app by helm. You need set your URL](#install-example-app-by-helm-you-need-set-your-url)
+  * [Install browser-proxy by helm. You need set your URL](#install-browser-proxy-by-helm-you-need-set-your-url)
+  * [Install autotest-extension-dispatcher by helm. You need set your URL](#install-autotest-extension-dispatcher-by-helm-you-need-set-your-url)
+
+
 # helm charts for install drill-admin, drill-admin-ui, example-app
 
 ## Requirements:
