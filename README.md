@@ -20,10 +20,8 @@ Install in Kubernetes on Cloud
 
 # Installation NGINX Ingress Controller
 ```
-helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-helm repo update
-
-helm install ingress-nginx ingress-nginx/ingress-nginx
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx && helm repo update
+helm install --atomic nginx-ingress ingress-nginx/ingress-nginx --version 3.36.0
 ```
 
 # Yet another install
