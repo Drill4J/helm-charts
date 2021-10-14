@@ -96,4 +96,31 @@ helm install -n drill --set persistence.enabled=true,ingress.enabled=true,ingres
 helm install -n drill autotest-extension-dispatcher drill4j/autotest-extension-dispatcher
 ```
 
+# Install Drill to Minikube on Windows
+## Requirements: 
+- [Install kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/)
+- [Install helm](https://helm.sh/docs/intro/install/#from-chocolatey-windows)
+- [Install Minikube](https://minikube.sigs.k8s.io/docs/start/)
+
+## Get External IP Minikube
+```
+$IP=minikube ip
+```
+## Check external IP
+```
+echo $IP
+```
+
+## Install drill admin by helm. You need set your URL (admin is web for swagger)
+```
+$URLADMIN='drill-admin.' + $IP + '.sslip.io'
+helm install -n drill --set persistence.enabled=true,ingress.enabled=true,ingress.hosts[0].host=$URLADMIN,ingress.hosts[0].paths[0].path=/ drill-admin drill4j/admin
+```
+
+## Install drill admin-ui by helm. You need set your URL
+```
+$URLADMINUI='drill-admin-ui.' + $IP + '.sslip.io'
+helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URLADMINUI,ingress.hosts[0].paths[0].path=/ drill-admin-ui drill4j/admin-ui
+```
+
 For local development of helm-chart please read [Local development](local-development.md)
