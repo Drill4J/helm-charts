@@ -25,11 +25,10 @@ helm install --atomic nginx-ingress ingress-nginx/ingress-nginx --version 3.36.0
 ```
 
 # Yet another install
-## Get public IP address of Ingress Controller
-IP=xx.xx.xx.xx
-## Change . to - in public ip address. Create new variable $URL
-export IP=$(echo $IP | sed 's/\./-/g')
-
+## Get External IP Kubernetes NGINX Ingress Controller service
+```
+export IP=$(kubectl get services nginx-ingress-ingress-nginx-controller --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
+```
 ## Install drill admin by helm. You need set your URL (admin is web for swagger)
 ```
 URLADMIN=drill-admin.$IP.sslip.io
