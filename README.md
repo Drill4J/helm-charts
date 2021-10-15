@@ -123,4 +123,41 @@ $URLADMINUI='drill-admin-ui.' + $IP + '.sslip.io'
 helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URLADMINUI,ingress.hosts[0].paths[0].path=/ drill-admin-ui drill4j/admin-ui
 ```
 
+
+# Basic Authentication
+Create file htpasswd
+```
+sudo apt install apache2-utils
+$ htpasswd -c auth user
+New password:
+Re-type new password:
+Adding password for user user
+```
+
+Create secret
+```
+$ kubectl create secret generic basic-auth --from-file=auth -n drill
+secret "basic-auth" created
+```
+
+Check secret
+```
+$ kubectl get secret basic-auth -n drill -o yaml
+apiVersion: v1
+data:
+  auth: XXXXXXXXXXXXXXXXXXXXXXX
+kind: Secret
+metadata:
+  name: basic-auth
+  namespace: drill
+type: Opaque
+```
+
+Install drill-admin-ui
+```
+export IP=xx.xx.xx.xx
+URLADMINUI=drill-admin-ui.$IP.sslip.io
+helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URLADMINUI,ingress.hosts[0].paths[0].path=/ drill-admin-ui drill4j/admin-ui --set ingress.annotations."nginx\.ingress\.kubernetes\.io/auth-type"=basic  --set ingress.annotations."nginx\.ingress\.kubernetes\.io/auth-secret"=basic-auth --set ingress.annotations."nginx\.ingress\.kubernetes\.io/auth-realm"="Authentication Required - ok"
+```
+
 For local development of helm-chart please read [Local development](local-development.md)
