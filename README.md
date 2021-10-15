@@ -163,7 +163,7 @@ helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URLADMIN
 # Use docker secret (for example install drill-admin)
 Create secret docker-registry. For add info https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 ```
-kubectl create secret docker-registry regcred --docker-server=<your-registry-server> --docker-username=<your-name> --docker-password=<your-pword> --docker-email=<your-email>
+kubectl create secret docker-registry regcred  -n drill --docker-server=<your-registry-server> --docker-username=<your-name> --docker-password=<your-pword> --docker-email=<your-email>
 ```
 
 Install drill-admin with docker secret
