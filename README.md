@@ -160,4 +160,16 @@ URLADMINUI=drill-admin-ui.$IP.sslip.io
 helm install -n drill --set ingress.enabled=true,ingress.hosts[0].host=$URLADMINUI,ingress.hosts[0].paths[0].path=/ drill-admin-ui drill4j/admin-ui --set ingress.annotations."nginx\.ingress\.kubernetes\.io/auth-type"=basic  --set ingress.annotations."nginx\.ingress\.kubernetes\.io/auth-secret"=basic-auth --set ingress.annotations."nginx\.ingress\.kubernetes\.io/auth-realm"="Authentication Required - ok"
 ```
 
+# Use docker secret (for example install drill-admin)
+Create secret docker-registry. For add info https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+```
+kubectl create secret docker-registry regcred --docker-server=<your-registry-server> --docker-username=<your-name> --docker-password=<your-pword> --docker-email=<your-email>
+```
+
+Install drill-admin with docker secret
+```
+URLADMIN=drill-admin.$IP.sslip.io
+helm install -n drill --set persistence.enabled=true,ingress.enabled=true,ingress.hosts[0].host=$URLADMIN,ingress.hosts[0].paths[0].path=/ drill-admin,imagePullSecrets[0].name=regcred drill4j/admin
+```
+
 For local development of helm-chart please read [Local development](local-development.md)
