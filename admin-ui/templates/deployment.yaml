@@ -41,7 +41,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: UPSTREAM
-              value: drill-admin.drill.svc.cluster.local:8090
+              value: "{{ .Values.UPSTREAM }}"
             - name: UI_PLUGINS_URLS
               value: "{{ .Values.UI_PLUGINS_URLS }}"
           ports:
