@@ -11,10 +11,10 @@ image:
   tag: ""
 
 imagejavaagent:
-  repository: antonpatsev/javaagent
+  repository: drill4j/java-agent
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "8104-39"
+  tag: "0.8.0-23"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -125,5 +125,5 @@ persistentVolumeClaim:
   ##
   # storageClass: "-"
 
-AGENT_VERSION: "0.7.0"
-AUTOTEST_AGENT_VERSION: "0.16.2"
+AGENT_VERSION: "0.8.0-23"
+AUTOTEST_AGENT_VERSION: "0.16.15"
