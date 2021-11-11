@@ -37,7 +37,7 @@ spec:
               value: "{{ .Values.AUTOTEST_AGENT_VERSION }}"
           volumeMounts:
             - mountPath: /data
-              name: "agent-files-{{ .Values.imagejavaagent.tag | replace "." "-" }}"
+              name: "agent-files-{{ lower .Values.imagejavaagent.tag | replace "." "-" }}"
       containers:
         - name: {{ .Chart.Name }}
           env:
@@ -61,7 +61,7 @@ spec:
               port: 8080
           volumeMounts:
             - mountPath: /data
-              name: "agent-files-{{ .Values.imagejavaagent.tag | replace "." "-" }}"
+              name: "agent-files-{{ lower .Values.imagejavaagent.tag | replace "." "-" }}"
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
@@ -77,5 +77,5 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       volumes:
-        - name: "agent-files-{{ .Values.imagejavaagent.tag | replace "." "-" }}"
+        - name: "agent-files-{{ lower .Values.imagejavaagent.tag | replace "." "-" }}"
           emptyDir: {}            
