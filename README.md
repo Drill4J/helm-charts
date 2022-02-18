@@ -45,6 +45,7 @@ Install in Kubernetes on Cloud
 
 # Installation NGINX Ingress Controller
 When use kubernetes 1.18 then use ingress-nginx version 3.36.0
+
 When use kubernetes 1.22 then use ingress-nginx version latest
 ```
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx && helm repo update
