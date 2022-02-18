@@ -92,7 +92,7 @@ sudo chown ubuntu:ubuntu /home/ubuntu/.kube
 ## Export microk8s kubectl config to general kubectl config
 
 ```
-microk8s.kubectl config view --raw > $HOME/.kube/microk8s.config
+microk8s kubectl config view --raw > $HOME/.kube/microk8s.config
 export  KUBECONFIG=$HOME/.kube/config
 export  KUBECONFIG=$KUBECONFIG:$HOME/.kube/microk8s.config
 sudo usermod -aG microk8s ubuntu
