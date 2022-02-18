@@ -3,7 +3,8 @@
 Article based on https://microk8s.io/docs/install-alternatives#heading--windows
 
 ```
-Note: We recommend Windows 10 Professional or Windows 10 Enterprise. MicroK8s will also require at least 4GB of available RAM and 40GB of storage.
+Note: We recommend Windows 10 Professional or Windows 10 Enterprise.
+MicroK8s will also require at least 4GB of available RAM and 40GB of storage.
 ```
 
 # Download the MicroK8s Installer for Windows
