@@ -42,7 +42,7 @@ If output have a few IP addresses, then check part of the IP in your windows
 ipconfig |findstr /i "xx.xx.xx"
 ```
 
-
+External ip is ip, the first 3 octets are found by findstr.
 
 ## **Check the status while Kubernetes starts**
 
