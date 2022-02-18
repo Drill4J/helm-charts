@@ -100,3 +100,4 @@ sudo usermod -aG microk8s ubuntu
 sudo chown -f -R ubuntu ~/.kube
 ```
 
+Go to https://github.com/Drill4J/helm-charts
