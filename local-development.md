@@ -40,6 +40,16 @@ helm install --atomic -n drill \
 browser-proxy ./browser-proxy
 ```
 
+## Install devtools-proxy by helm. You need set your URL
+```
+helm install --atomic -n drill \
+--set persistence.enabled=false \
+--set ingress.enabled=true \
+--set ingress.hosts[0].host=devtools-proxy.$IP.sslip.io \
+--set ingress.hosts[0].paths[0].path=/ \
+devtools-proxy ./devtools-proxy
+```
+
 ## Install drill admin-ui by helm. You need set your URL
 ```
 helm install --atomic -n drill \

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "devtools-proxy.fullname" . }}
+  labels:
+    {{- include "devtools-proxy.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 8093
+      protocol: TCP
+      name: http8093
+  selector:
+    {{- include "devtools-proxy.selectorLabels" . | nindent 4 }}
