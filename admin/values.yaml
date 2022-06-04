@@ -113,6 +113,19 @@ persistentVolumeClaim:
   ##
   # storageClass: "-"
 
+postgresql: # Postgres Database
+  enabled: true
+  # Sub-chart values, see https://artifacthub.io/packages/helm/bitnami/postgresql
+  # The URL to the Postgres Database Connection String see -> https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING
+  # Replace POSTGRES_PW with the auth.postgresPassword below !
+  # url: "postgres://postgres:POSTGRES_PW@postgresql:5432/postgres"
+  auth:
+    postgresPassword:
+# custom postgresql.config values: 
+# https://github.com/bitnami/charts/issues/5075
+# https://stackoverflow.com/questions/71214664/how-to-change-bitnami-postgresql-helm-chart-configs-ph-hba-conf-postgresql-co
+
+
 DRILL_AGENTS_SOCKET_TIMEOUT: "120"
 DRILL_DEFAULT_PACKAGES: "com/epam/ta/reportportal"
 JAVA_TOOL_OPTIONS: "-Xmx2g"
