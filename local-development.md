@@ -27,6 +27,8 @@ helm install --atomic -n drill \
 --set LOG_LEVEL="DEBUG" \
 --set TEST2CODE_PLUGIN_VERSION="0.8.0-7" \
 --set image.tag=latest \
+--set postgresql.auth.postgresPassword=changepassword \
+--set DRILL_DB_PASSWORD=changepassword \
 drill-admin ./admin
 ```
 
