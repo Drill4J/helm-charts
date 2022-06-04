@@ -36,12 +36,30 @@ spec:
           env:
             - name: DRILL_AGENTS_SOCKET_TIMEOUT
               value: "{{ .Values.DRILL_AGENTS_SOCKET_TIMEOUT }}"
+            - name: DRILL_DB_HOST
+              value: "{{ .Values.DRILL_DB_HOST }}"
+            - name: DRILL_DB_MAX_POOL_SIZE
+              value: "{{ .Values.DRILL_DB_MAX_POOL_SIZE }}"
+            - name: DRILL_DB_NAME
+              value: "{{ .Values.DRILL_DB_NAME }}"
+            - name: DRILL_DB_PASSWORD
+              value: "{{ .Values.DRILL_DB_PASSWORD }}"
+            - name: DRILL_DB_PORT
+              value: "{{ .Values.DRILL_DB_PORT }}"
+            - name: DRILL_DB_USER_NAME
+              value: "{{ .Values.DRILL_DB_USER_NAME }}"
             - name: DRILL_DEFAULT_PACKAGES
               value: "{{ .Values.DRILL_DEFAULT_PACKAGES }}"
+            - name: DSM_PUSH_LIMIT
+              value: "{{ .Values.DSM_PUSH_LIMIT }}"
             - name: JAVA_TOOL_OPTIONS
               value: "{{ .Values.JAVA_TOOL_OPTIONS }}"
             - name: LOG_LEVEL
               value: "{{ .Values.LOG_LEVEL }}"
+            - name: LOG_MESSAGE_MAX_LENGTH
+              value: "{{ .Values.LOG_MESSAGE_MAX_LENGTH }}"
+            - name: TEST2CODE_PLUGIN_URL
+              value: "{{ .Values.TEST2CODE_PLUGIN_URL }}"
             - name: TEST2CODE_PLUGIN_VERSION
               value: "{{ .Values.TEST2CODE_PLUGIN_VERSION }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
